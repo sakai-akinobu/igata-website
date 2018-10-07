@@ -26,6 +26,7 @@
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
     "pre-commit": "^1.2.2",
     "ts-loader": "^5.2.1",
     "tslint": "^5.11.0",
