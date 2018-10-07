@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/sakai-akinobu/igata-website/issues"
   },
-  "homepage": "https://github.com/sakai-akinobu/igata-website#readme"
+  "homepage": "https://github.com/sakai-akinobu/igata-website#readme",
+  "devDependencies": {
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  }
 }
