@@ -1,3 +1,4 @@
+import {convert} from "igata";
 import * as React from "react";
 
 import ContentContainer from "../../components/ContentContainer";
@@ -20,7 +21,7 @@ export default class App extends React.Component<IProps, IState> {
 
     this.state = {
       inputCode: defaultSampleCode,
-      outputCode: "",
+      outputCode: this.tryParseToFlowCode(defaultSampleCode),
     };
   }
 
@@ -43,12 +44,22 @@ export default class App extends React.Component<IProps, IState> {
     );
   }
 
+  private tryParseToFlowCode(value: string): string {
+    let flowCode = "";
+    try {
+      flowCode = convert(JSON.parse(value));
+    } catch (e) {
+      // tslint:disable-line no-empty
+    }
+    return flowCode;
+  }
+
   private handleChangeInputCode = (value: string) => {
     this.setState((state) => {
       return {
         ...state,
         inputCode: value,
-        outputCode: value, // TODO
+        outputCode: this.tryParseToFlowCode(value),
       };
     });
   }
