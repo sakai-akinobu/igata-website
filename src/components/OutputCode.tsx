@@ -5,5 +5,10 @@ interface IProps {
 }
 
 export default function OutputCode({value}: IProps) {
-  return <textarea value={value} />;
+  return (
+    <textarea
+      value={value}
+      readOnly={true}
+    />
+  );
 }

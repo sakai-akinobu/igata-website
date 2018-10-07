@@ -34,11 +34,21 @@ export default class App extends React.Component<IProps, IState> {
         <Header />
         <ContentContainer>
           <SplitLayout>
-            <Editor value={inputCode} />
+            <Editor value={inputCode} onChange={this.handleChangeInputCode} />
             <OutputCode value={outputCode} />
           </SplitLayout>
         </ContentContainer>
       </div>
     );
+  }
+
+  private handleChangeInputCode = (value: string) => {
+    this.setState((state) => {
+      return {
+        ...state,
+        inputCode: value,
+        outputCode: value, // TODO
+      };
+    });
   }
 }
