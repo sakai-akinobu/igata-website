@@ -5,6 +5,7 @@ import Editor from "../components/Editor";
 import Header from "../components/Header";
 import OutputCode from "../components/OutputCode";
 import SplitLayout from "../components/SplitLayout";
+import defaultSampleCode from "../utils/defaultSampleCode";
 
 interface IProps extends React.Props<any> {}
 
@@ -18,7 +19,7 @@ export default class App extends React.Component<IProps, IState> {
     super(props);
 
     this.state = {
-      inputCode: "",
+      inputCode: defaultSampleCode,
       outputCode: "",
     };
   }
