@@ -1,0 +1,19 @@
+{
+  "name": "igata-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sakai-akinobu/igata-website.git"
+  },
+  "author": "Akinobu SAKAI <sakai.akinobu@gmail.com> (https://github.com/sakai-akinobu)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sakai-akinobu/igata-website/issues"
+  },
+  "homepage": "https://github.com/sakai-akinobu/igata-website#readme"
+}
