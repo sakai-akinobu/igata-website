@@ -1,5 +1,9 @@
 import * as React from "react";
 
-export default function Editor() {
-  return <textarea />;
+interface IProps {
+  value: string;
+}
+
+export default function Editor({value}: IProps) {
+  return <textarea value={value} />;
 }
