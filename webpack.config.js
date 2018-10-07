@@ -2,8 +2,26 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: './src/index.tsx',
   devtool: 'inline-source-map',
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader',
+        },
+      },
+    ],
+  },
+  resolve: {
+    extensions: [
+      '.tsx',
+      '.ts',
+      '.js',
+    ],
+  },
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public/dist'),
