@@ -1,11 +1,11 @@
 import * as React from "react";
 
-import ContentContainer from "../components/ContentContainer";
-import Editor from "../components/Editor";
-import Header from "../components/Header";
-import OutputCode from "../components/OutputCode";
-import SplitLayout from "../components/SplitLayout";
-import defaultSampleCode from "../utils/defaultSampleCode";
+import ContentContainer from "../../components/ContentContainer";
+import Editor from "../../components/Editor";
+import Header from "../../components/Header";
+import OutputCode from "../../components/OutputCode";
+import SplitLayout from "../../components/SplitLayout";
+import defaultSampleCode from "../../utils/defaultSampleCode";
 
 interface IProps extends React.Props<any> {}
 
