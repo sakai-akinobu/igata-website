@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "$(npm bin)/webpack --config webpack.config.js",
+    "lint": "$(npm bin)/tslint -c tslint.json src/**/*.ts src/**/*.tsx",
+    "lint:fix": "$(npm bin)/tslint -c tslint.json --fix src/**/*.ts src/**/*.tsx",
     "start": "$(npm bin)/webpack-dev-server"
   },
   "repository": {
