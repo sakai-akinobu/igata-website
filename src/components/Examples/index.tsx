@@ -2,6 +2,7 @@ import * as React from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import {hybrid} from "react-syntax-highlighter/styles/hljs";
 
+import SectionTitle from "../SectionTitle";
 import styles from "./styles.scss";
 
 const examples = [
@@ -73,17 +74,18 @@ const examples = [
 export default function Examples() {
   return (
     <div className={styles.examples}>
-    {examples.map((example) => (
-        <div key={example.title} className={styles.example}>
-        <h3>{example.title}</h3>
-        <SyntaxHighlighter
-            language="javascript"
-            style={hybrid}
-        >
-            {example.code}
-        </SyntaxHighlighter>
-        </div>
-    ))}
+      <SectionTitle title="Examples" />
+      {examples.map((example) => (
+          <div key={example.title} className={styles.example}>
+          <h3>{example.title}</h3>
+          <SyntaxHighlighter
+              language="javascript"
+              style={hybrid}
+          >
+              {example.code}
+          </SyntaxHighlighter>
+          </div>
+      ))}
     </div>
   );
 }

@@ -8,6 +8,7 @@ import Examples from "../../components/Examples";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import OutputCode from "../../components/OutputCode";
+import SectionTitle from "../../components/SectionTitle";
 import SplitLayout from "../../components/SplitLayout";
 import defaultSampleCode from "../../utils/defaultSampleCode";
 
@@ -40,10 +41,13 @@ export default class App extends React.Component<IProps, IState> {
         <ContentContainer>
           <ContentHeader />
           <Examples />
-          <SplitLayout>
-            <Editor value={inputCode} onChange={this.handleChangeInputCode} />
-            <OutputCode value={outputCode} />
-          </SplitLayout>
+          <div>
+            <SectionTitle title="Try it out" />
+            <SplitLayout>
+              <Editor value={inputCode} onChange={this.handleChangeInputCode} />
+              <OutputCode value={outputCode} />
+            </SplitLayout>
+          </div>
         </ContentContainer>
         <Footer />
       </div>
