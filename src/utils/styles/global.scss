@@ -1,3 +1,7 @@
+* {
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto;
+}
+
 a,
 input,
 button,
@@ -6,6 +10,7 @@ textarea {
   appearance: none;
 }
 
+body,
 pre {
   margin: 0;
 }
