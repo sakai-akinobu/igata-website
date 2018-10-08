@@ -1,0 +1,16 @@
+.examples {
+  display: flex;
+  max-width: 900px;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-around;
+  padding: 0 40px;
+  margin: 20px 0;
+  margin: 0 auto;
+
+  & > .example {
+    overflow: scroll;
+    flex: 1 1 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+}

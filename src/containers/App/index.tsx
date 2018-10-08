@@ -4,6 +4,7 @@ import * as React from "react";
 import ContentContainer from "../../components/ContentContainer";
 import ContentHeader from "../../components/ContentHeader";
 import Editor from "../../components/Editor";
+import Examples from "../../components/Examples";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import OutputCode from "../../components/OutputCode";
@@ -38,6 +39,7 @@ export default class App extends React.Component<IProps, IState> {
         <Header />
         <ContentContainer>
           <ContentHeader />
+          <Examples />
           <SplitLayout>
             <Editor value={inputCode} onChange={this.handleChangeInputCode} />
             <OutputCode value={outputCode} />
