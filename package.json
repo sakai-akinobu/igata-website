@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/sakai-akinobu/igata-website#readme",
   "pre-commit": [
-    "lint"
+    "lint",
+    "stylelint"
   ],
   "devDependencies": {
     "@types/react": "^16.4.15",
