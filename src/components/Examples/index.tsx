@@ -76,15 +76,15 @@ export default function Examples() {
     <div className={styles.examples}>
       <SectionTitle title="Examples" />
       {examples.map((example) => (
-          <div key={example.title} className={styles.example}>
+        <div key={example.title} className={styles.example}>
           <h3>{example.title}</h3>
           <SyntaxHighlighter
-              language="javascript"
-              style={hybrid}
+            language="javascript"
+            style={hybrid}
           >
-              {example.code}
+            {example.code}
           </SyntaxHighlighter>
-          </div>
+        </div>
       ))}
     </div>
   );

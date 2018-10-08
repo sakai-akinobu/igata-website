@@ -7,6 +7,7 @@ import Editor from "../../components/Editor";
 import Examples from "../../components/Examples";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import Installation from "../../components/Installation";
 import OutputCode from "../../components/OutputCode";
 import SectionTitle from "../../components/SectionTitle";
 import SplitLayout from "../../components/SplitLayout";
@@ -40,6 +41,7 @@ export default class App extends React.Component<IProps, IState> {
         <Header />
         <ContentContainer>
           <ContentHeader />
+          <Installation />
           <Examples />
           <div>
             <SectionTitle title="Try it out" />
