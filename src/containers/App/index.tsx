@@ -3,10 +3,12 @@ import * as React from "react";
 
 import ContentContainer from "../../components/ContentContainer";
 import Editor from "../../components/Editor";
+import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import OutputCode from "../../components/OutputCode";
 import SplitLayout from "../../components/SplitLayout";
 import defaultSampleCode from "../../utils/defaultSampleCode";
+import "../../utils/styles/global.scss";
 
 interface IProps extends React.Props<any> {}
 
@@ -40,6 +42,7 @@ export default class App extends React.Component<IProps, IState> {
             <OutputCode value={outputCode} />
           </SplitLayout>
         </ContentContainer>
+        <Footer />
       </div>
     );
   }
