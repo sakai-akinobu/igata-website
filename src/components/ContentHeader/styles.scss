@@ -1,0 +1,19 @@
+@import "../../utils/styles/color-palettes.scss";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient($COLOR-PALETTE-PURPLE-600, $COLOR-PALETTE-PURPLE-500);
+  color: $COLOR-PALETTE-WHITE;
+  height: 500px;
+
+  > .title {
+    font-size: 2.4rem;
+  }
+
+  > .subTitle {
+    font-size: 1.4rem;
+  }
+}
