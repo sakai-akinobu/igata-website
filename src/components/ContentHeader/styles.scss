@@ -2,12 +2,12 @@
 
 .container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 500px;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient($COLOR-PALETTE-PURPLE-600, $COLOR-PALETTE-PURPLE-500);
   color: $COLOR-PALETTE-WHITE;
-  height: 500px;
 
   > .title {
     font-size: 2.4rem;
