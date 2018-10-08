@@ -1,10 +1,19 @@
+@import "../../utils/styles/variables.scss";
+
 .container {
   display: flex;
   max-width: 900px;
   min-height: 400px;
+  padding: 0 20px;
   margin: 0 auto;
 
   & > * {
     flex: auto;
+  }
+}
+
+@media (max-width: $MEDIA-BREAK-POINT-SMALL) {
+  .container {
+    flex-direction: column;
   }
 }
