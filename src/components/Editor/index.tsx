@@ -16,6 +16,7 @@ export default function Editor({value, onChange}: IProps) {
       options={({
         lineNumbers: true,
         mode: "javascript",
+        theme: "monokai",
       })}
       className={styles.textarea}
     />

@@ -3,6 +3,7 @@ import * as ReactDOM from "react-dom";
 
 import "codemirror/lib/codemirror.css";
 import "codemirror/mode/javascript/javascript";
+import "codemirror/theme/monokai.css";
 import App from "./containers/App";
 import "./utils/styles/global.scss";
 

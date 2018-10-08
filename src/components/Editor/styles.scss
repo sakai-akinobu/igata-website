@@ -1,4 +1,10 @@
 .textarea {
   font-size: 1.1rem;
   font-family: monospace;
+
+  :global {
+    .CodeMirror {
+      min-height: 400px;
+    }
+  }
 }
