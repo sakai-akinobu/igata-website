@@ -1,4 +1,6 @@
 import * as React from "react";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import {hybrid} from "react-syntax-highlighter/styles/hljs";
 
 import styles from "./styles.scss";
 
@@ -8,10 +10,12 @@ interface IProps {
 
 export default function OutputCode({value}: IProps) {
   return (
-    <textarea
-      value={value}
+    <SyntaxHighlighter
+      language="flow"
       className={styles.textarea}
-      readOnly={true}
-    />
+      style={hybrid}
+    >
+      {value}
+    </SyntaxHighlighter>
   );
 }
