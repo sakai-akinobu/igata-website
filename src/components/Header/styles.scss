@@ -22,6 +22,15 @@
   > .nav {
     flex: 0 0 120px;
 
+    > .link {
+      font-size: 1.4rem;
+
+      &:visited {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+
     > .link + .link {
       padding-left: 8px;
     }

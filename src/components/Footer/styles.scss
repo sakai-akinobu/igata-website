@@ -1,4 +1,24 @@
+@import "../../utils/styles/color-palettes.scss";
+
 .footer {
   display: flex;
+  min-height: 140px;
+  align-items: center;
   justify-content: center;
+  padding: 10px;
+
+  .link {
+    flex: 0 0 80px;
+    font-size: 2rem;
+    text-align: center;
+
+    > svg {
+      color: $COLOR-PALETTE-GREY-700;
+    }
+
+    &:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
 }
