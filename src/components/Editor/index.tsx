@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as ReactCodemirror from "react-codemirror";
 
 import styles from "./styles.scss";
 
@@ -9,9 +10,13 @@ interface IProps {
 
 export default function Editor({value, onChange}: IProps) {
   return (
-    <textarea
+    <ReactCodemirror
       value={value}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={(v: string) => onChange(v)}
+      options={({
+        lineNumbers: true,
+        mode: "javascript",
+      })}
       className={styles.textarea}
     />
   );

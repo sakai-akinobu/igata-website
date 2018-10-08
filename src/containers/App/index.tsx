@@ -8,7 +8,6 @@ import Header from "../../components/Header";
 import OutputCode from "../../components/OutputCode";
 import SplitLayout from "../../components/SplitLayout";
 import defaultSampleCode from "../../utils/defaultSampleCode";
-import "../../utils/styles/global.scss";
 
 interface IProps extends React.Props<any> {}
 

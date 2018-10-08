@@ -16,6 +16,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
+        exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
@@ -43,6 +44,17 @@ module.exports = {
                   require('autoprefixer')(),
                 ],
               },
+            },
+          ],
+        }),
+      },
+      {
+        test: /\/node_modules\/.*\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
             },
           ],
         }),
