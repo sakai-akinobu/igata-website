@@ -20,7 +20,10 @@
   }
 
   > .nav {
-    flex: 0 0 120px;
+    display: flex;
+    flex: 0 0 90px;
+    align-content: center;
+    justify-content: center;
 
     > .link {
       font-size: 1.4rem;
