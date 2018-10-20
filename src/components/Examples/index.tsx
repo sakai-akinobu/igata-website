@@ -69,6 +69,61 @@ const examples = [
     `,
     title: "ComplexUnion",
   },
+  {
+    code: `
+      import {convert} from 'igata';
+
+      const jsonSchema = {
+        $id: 'Nullable',
+        type: ['string', 'null'],
+      };
+      convert(jsonSchema);
+      // => export type Nullable = string | null;
+    `,
+    title: "Nullable",
+  },
+  {
+    code: `
+      import {convert} from 'igata';
+
+      const jsonSchema = {
+        $id: 'ExactObject',
+        type: 'object',
+        additionalProperties: false,
+        properties: {
+          foo: {
+            type: 'string',
+          },
+        },
+      };
+      convert(jsonSchema);
+      // => export type ExactObject = {|foo?: string|};
+    `,
+    title: "Exact object",
+  },
+  {
+    code: `
+      import {convert} from 'igata';
+
+      const jsonSchema = {
+        $id: 'Definition',
+        $ref: '#/definitions/foo',
+        definitions: {
+          foo: {
+            type: 'object',
+            properties: {
+              bar: {
+                type: 'string',
+              },
+            },
+          },
+        },
+      };
+      convert(jsonSchema);
+      // => export type Definition = {bar?: string};
+    `,
+    title: "Reference to definitions",
+  },
 ];
 
 export default function Examples() {
