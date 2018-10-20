@@ -26,8 +26,11 @@
       font-size: 1.4rem;
 
       &:visited {
-        color: inherit;
         text-decoration: none;
+      }
+
+      > svg {
+        color: $COLOR-PALETTE-WHITE;
       }
     }
 
