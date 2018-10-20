@@ -69,7 +69,7 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, '..', 'public'),
+    path: path.resolve(__dirname, '../public/dist'),
   },
   plugins: [
     new ExtractTextPlugin('bundle.css'),
