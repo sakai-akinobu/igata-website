@@ -26,6 +26,7 @@
     justify-content: center;
 
     > .link {
+      padding-right: 12px;
       font-size: 1.4rem;
 
       &:visited {
@@ -35,10 +36,6 @@
       > svg {
         color: $COLOR-PALETTE-WHITE;
       }
-    }
-
-    > .link + .link {
-      padding-left: 8px;
     }
   }
 }
