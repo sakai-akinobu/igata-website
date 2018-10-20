@@ -10,6 +10,6 @@ npm start
 # open http://localhost:8080 in your browser.
 ```
 
-## Demo
+## Website
 
-https://jolly-davinci-dd7a4f.netlify.com/
+https://igata.netlify.com/
