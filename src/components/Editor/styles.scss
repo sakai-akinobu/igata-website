@@ -1,6 +1,7 @@
 .textarea {
   font-family: monospace;
   font-size: 1.1rem;
+  isolation: isolate; // for create stacking context
 
   :global {
     .CodeMirror {
