@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "$(npm bin)/webpack --config webpack.config.js",
+    "build": "$(npm bin)/webpack --config webpack/production.js",
     "lint": "$(npm bin)/tslint -c tslint.json src/**/*.ts src/**/*.tsx",
     "lint:fix": "$(npm bin)/tslint -c tslint.json --fix src/**/*.ts src/**/*.tsx",
-    "start": "$(npm bin)/webpack-dev-server",
+    "start": "$(npm bin)/webpack-dev-server --config  webpack/development.js",
     "stylelint": "$(npm bin)/stylelint 'src/**/*.scss'",
     "stylelint:fix": "$(npm bin)/stylelint 'src/**/*.scss' --fix"
   },
