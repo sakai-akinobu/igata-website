@@ -7,7 +7,7 @@ import "codemirror/theme/monokai.css";
 import App from "./containers/App";
 import "./utils/styles/global.scss";
 
-ReactDOM.render(
+ReactDOM.hydrate(
   <App />,
   document.getElementById("app") as HTMLElement,
 );
