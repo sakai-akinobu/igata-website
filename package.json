@@ -8,7 +8,7 @@
     "lint": "$(npm bin)/tslint -c tslint.json src/**/*.ts src/**/*.tsx",
     "lint:fix": "$(npm bin)/tslint -c tslint.json --fix src/**/*.ts src/**/*.tsx",
     "prerender": "$(npm bin)/webpack --config webpack/prerender.js && node ./tmp/prerender.js > public/index.html",
-    "start": "$(npm bin)/webpack-dev-server --config  webpack/development.js",
+    "start": "npm run prerender && $(npm bin)/webpack-dev-server --config  webpack/development.js",
     "stylelint": "$(npm bin)/stylelint 'src/**/*.scss'",
     "stylelint:fix": "$(npm bin)/stylelint 'src/**/*.scss' --fix"
   },
