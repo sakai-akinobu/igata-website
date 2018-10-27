@@ -32,7 +32,7 @@ export default class App extends React.Component<IProps, IState> {
       inputCode: defaultSampleCode,
       jsonParseErrorMessage: "",
       jsonSchemaValidationErrorMessages: [],
-      outputCode: this.tryParseToFlowCode(defaultSampleCode),
+      outputCode: tryParseToFlowCode(defaultSampleCode),
     };
   }
 
@@ -69,51 +69,51 @@ export default class App extends React.Component<IProps, IState> {
     );
   }
 
-  private tryParseToFlowCode(value: string): string {
-    let flowCode = "";
-    try {
-      flowCode = convert(JSON.parse(value));
-    } catch (e) {
-      // tslint:disable-line no-empty
-    }
-    return flowCode;
-  }
-
-  private validateAsJson(value: string): string {
-    let errorMessage = "";
-    try {
-      JSON.parse(value);
-    } catch (e) {
-      errorMessage = e.message;
-    }
-    return errorMessage;
-  }
-
-  private validateAsJsonSchema(value: string): string[] {
-    let errors: string[] = [];
-
-    const ajv = new Ajv();
-    try {
-      if (!ajv.validateSchema(JSON.parse(value))) {
-        errors = (ajv.errors || []).map((error) => (
-          `${error.dataPath} ${error.message}. ${JSON.stringify(error.params || {})}`
-        ));
-      }
-    } catch (e) {
-      // tslint:disable-line no-empty
-    }
-    return errors;
-  }
-
   private handleChangeInputCode = (value: string) => {
     this.setState((state) => {
       return {
         ...state,
         inputCode: value,
-        jsonParseErrorMessage: this.validateAsJson(value),
-        jsonSchemaValidationErrorMessages: this.validateAsJsonSchema(value),
-        outputCode: this.tryParseToFlowCode(value),
+        jsonParseErrorMessage: validateAsJson(value),
+        jsonSchemaValidationErrorMessages: validateAsJsonSchema(value),
+        outputCode: tryParseToFlowCode(value),
       };
     });
   }
+}
+
+function tryParseToFlowCode(value: string): string {
+  let flowCode = "";
+  try {
+    flowCode = convert(JSON.parse(value));
+  } catch (e) {
+    // tslint:disable-line no-empty
+  }
+  return flowCode;
+}
+
+function validateAsJson(value: string): string {
+  let errorMessage = "";
+  try {
+    JSON.parse(value);
+  } catch (e) {
+    errorMessage = e.message;
+  }
+  return errorMessage;
+}
+
+function validateAsJsonSchema(value: string): string[] {
+  let errors: string[] = [];
+
+  const ajv = new Ajv();
+  try {
+    if (!ajv.validateSchema(JSON.parse(value))) {
+      errors = (ajv.errors || []).map((error) => (
+        `${error.dataPath} ${error.message}. ${JSON.stringify(error.params || {})}`
+      ));
+    }
+  } catch (e) {
+    // tslint:disable-line no-empty
+  }
+  return errors;
 }
