@@ -1,3 +1,4 @@
+import * as Ajv from "ajv";
 import {convert} from "igata";
 import * as React from "react";
 
@@ -18,6 +19,7 @@ interface IProps extends React.Props<any> {}
 interface IState {
   inputCode: string;
   outputCode: string;
+  validationErrorMessages: string[];
 }
 
 export default class App extends React.Component<IProps, IState> {
@@ -27,6 +29,7 @@ export default class App extends React.Component<IProps, IState> {
     this.state = {
       inputCode: defaultSampleCode,
       outputCode: this.tryParseToFlowCode(defaultSampleCode),
+      validationErrorMessages: [],
     };
   }
 
@@ -66,12 +69,27 @@ export default class App extends React.Component<IProps, IState> {
     return flowCode;
   }
 
+  private validateAsJsonSchema(value: string): string[] {
+    let errors: string[] = [];
+
+    const ajv = new Ajv();
+    try {
+      if (!ajv.validateSchema(JSON.parse(value))) {
+        errors = (ajv.errors || []).map((error) => `[${error.dataPath}] ${error.message}`);
+      }
+    } catch (e) {
+      // tslint:disable-line no-empty
+    }
+    return errors;
+  }
+
   private handleChangeInputCode = (value: string) => {
     this.setState((state) => {
       return {
         ...state,
         inputCode: value,
         outputCode: this.tryParseToFlowCode(value),
+        validationErrorMessages: this.validateAsJsonSchema(value),
       };
     });
   }
