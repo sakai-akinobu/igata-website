@@ -12,6 +12,7 @@ import Installation from "../../components/Installation";
 import OutputCode from "../../components/OutputCode";
 import SectionTitle from "../../components/SectionTitle";
 import SplitLayout from "../../components/SplitLayout";
+import ValidationErrors from "../../components/ValidationErrors";
 import defaultSampleCode from "../../utils/defaultSampleCode";
 
 interface IProps extends React.Props<any> {}
@@ -37,6 +38,7 @@ export default class App extends React.Component<IProps, IState> {
     const {
       inputCode,
       outputCode,
+      validationErrorMessages,
     } = this.state;
 
     return (
@@ -52,6 +54,7 @@ export default class App extends React.Component<IProps, IState> {
               <Editor value={inputCode} onChange={this.handleChangeInputCode} />
               <OutputCode value={outputCode} />
             </SplitLayout>
+            <ValidationErrors errors={validationErrorMessages} />
           </div>
         </ContentContainer>
         <Footer />
@@ -75,7 +78,9 @@ export default class App extends React.Component<IProps, IState> {
     const ajv = new Ajv();
     try {
       if (!ajv.validateSchema(JSON.parse(value))) {
-        errors = (ajv.errors || []).map((error) => `[${error.dataPath}] ${error.message}`);
+        errors = (ajv.errors || []).map((error) => (
+          `${error.dataPath} ${error.message}. ${JSON.stringify(error.params || {})}`
+        ));
       }
     } catch (e) {
       // tslint:disable-line no-empty

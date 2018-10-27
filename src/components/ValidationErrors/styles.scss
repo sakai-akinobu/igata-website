@@ -1,0 +1,11 @@
+@import "../../utils/styles/color-palettes.scss";
+
+.container {
+  overflow: scroll;
+  max-width: 900px;
+  padding: 0 20px;
+  margin: 0 auto;
+  color: $COLOR-PALETTE-RED-600;
+  list-style: none;
+  white-space: nowrap;
+}
