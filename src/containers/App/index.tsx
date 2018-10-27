@@ -20,7 +20,8 @@ interface IProps extends React.Props<any> {}
 interface IState {
   inputCode: string;
   outputCode: string;
-  validationErrorMessages: string[];
+  jsonParseErrorMessage: string;
+  jsonSchemaValidationErrorMessages: string[];
 }
 
 export default class App extends React.Component<IProps, IState> {
@@ -29,8 +30,9 @@ export default class App extends React.Component<IProps, IState> {
 
     this.state = {
       inputCode: defaultSampleCode,
+      jsonParseErrorMessage: "",
+      jsonSchemaValidationErrorMessages: [],
       outputCode: this.tryParseToFlowCode(defaultSampleCode),
-      validationErrorMessages: [],
     };
   }
 
@@ -38,8 +40,13 @@ export default class App extends React.Component<IProps, IState> {
     const {
       inputCode,
       outputCode,
-      validationErrorMessages,
+      jsonParseErrorMessage,
+      jsonSchemaValidationErrorMessages,
     } = this.state;
+
+    const errors = jsonParseErrorMessage
+      ? [jsonParseErrorMessage]
+      : jsonSchemaValidationErrorMessages;
 
     return (
       <div>
@@ -54,7 +61,7 @@ export default class App extends React.Component<IProps, IState> {
               <Editor value={inputCode} onChange={this.handleChangeInputCode} />
               <OutputCode value={outputCode} />
             </SplitLayout>
-            <ValidationErrors errors={validationErrorMessages} />
+            <ValidationErrors errors={errors} />
           </div>
         </ContentContainer>
         <Footer />
@@ -70,6 +77,16 @@ export default class App extends React.Component<IProps, IState> {
       // tslint:disable-line no-empty
     }
     return flowCode;
+  }
+
+  private validateAsJson(value: string): string {
+    let errorMessage = "";
+    try {
+      JSON.parse(value);
+    } catch (e) {
+      errorMessage = e.message;
+    }
+    return errorMessage;
   }
 
   private validateAsJsonSchema(value: string): string[] {
@@ -93,8 +110,9 @@ export default class App extends React.Component<IProps, IState> {
       return {
         ...state,
         inputCode: value,
+        jsonParseErrorMessage: this.validateAsJson(value),
+        jsonSchemaValidationErrorMessages: this.validateAsJsonSchema(value),
         outputCode: this.tryParseToFlowCode(value),
-        validationErrorMessages: this.validateAsJsonSchema(value),
       };
     });
   }
