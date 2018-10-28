@@ -8,17 +8,28 @@ interface IProps {
   onChange: (value: string) => void;
 }
 
-export default function Editor({value, onChange}: IProps) {
-  return (
-    <ReactCodemirror
-      value={value}
-      onChange={(v: string) => onChange(v)}
-      options={({
-        lineNumbers: true,
-        mode: "javascript",
-        theme: "monokai",
-      })}
-      className={styles.textarea}
-    />
-  );
+export default class Editor extends React.Component<IProps> {
+  private codemirror: React.RefObject<any> = React.createRef();
+
+  public render() {
+    const {value, onChange} = this.props;
+    return (
+      <ReactCodemirror
+        value={value}
+        onChange={(v: string) => onChange(v)} options={({
+          lineNumbers: true,
+          mode: "javascript",
+          theme: "monokai",
+        })}
+        className={styles.textarea}
+        ref={this.codemirror}
+      />
+    );
+  }
+
+  public componentDidMount() {
+    const codeMirror = this.codemirror.current.codeMirror;
+    setTimeout(() => codeMirror.refresh(), 0);
+  }
+
 }
