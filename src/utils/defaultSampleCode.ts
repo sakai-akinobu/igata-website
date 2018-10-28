@@ -1,14 +1,15 @@
 export default `{
   "$id": "Definition",
-  "$ref": "#/definitions/foo",
-  "definitions": {
+  "type": "object",
+  "required": [
+    "foo"
+  ],
+  "properties": {
     "foo": {
-      "type": "object",
-      "properties": {
-        "bar": {
-          "type": "string"
-        }
-      }
+      "type": "string"
+    },
+    "bar": {
+      "type": ["number", "string"]
     }
   }
 }
