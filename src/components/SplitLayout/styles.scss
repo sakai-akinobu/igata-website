@@ -1,19 +1,26 @@
 @import "../../utils/styles/variables.scss";
 
+$CONTAINER-MAX-WIDTH: 900px;
+$CONTAINER-MIN-HEIGHT: 400px;
+
 .container {
   display: flex;
-  max-width: 900px;
-  min-height: 400px;
+  max-width: $CONTAINER-MAX-WIDTH;
+  min-height: $CONTAINER-MIN-HEIGHT;
   padding: 0 20px;
   margin: 0 auto;
 
   & > * {
-    flex: auto;
+    flex: 1 1 $CONTAINER-MAX-WIDTH / 2;
   }
 }
 
 @media (max-width: $MEDIA-BREAK-POINT-SMALL) {
   .container {
     flex-direction: column;
+
+    & > * {
+      flex: 1 1 $CONTAINER-MIN-HEIGHT;
+    }
   }
 }
