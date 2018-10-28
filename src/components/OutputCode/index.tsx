@@ -1,6 +1,6 @@
 import * as React from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import {hybrid} from "react-syntax-highlighter/styles/hljs";
+import {monokai as theme} from "react-syntax-highlighter/styles/hljs";
 
 import styles from "./styles.scss";
 
@@ -11,9 +11,9 @@ interface IProps {
 export default function OutputCode({value}: IProps) {
   return (
     <SyntaxHighlighter
-      language="flow"
+      language="javascript"
       className={styles.textarea}
-      style={hybrid}
+      style={theme}
     >
       {value}
     </SyntaxHighlighter>

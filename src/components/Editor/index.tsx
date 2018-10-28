@@ -19,7 +19,7 @@ export default class Editor extends React.Component<IProps> {
         onChange={(v: string) => onChange(v)} options={({
           lineNumbers: true,
           mode: "javascript",
-          theme: "monokai",
+          theme: "night",
         })}
         className={styles.textarea}
         ref={this.codemirror}
