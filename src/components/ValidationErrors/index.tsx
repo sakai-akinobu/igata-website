@@ -8,10 +8,15 @@ interface IProps {
 
 export default function ValidationErrors({errors}: IProps) {
   return (
-    <ul className={styles.container}>
-      {errors.map((error, index) => (
-        <li key={index}>{error}</li>
-      ))}
-    </ul>
+    errors.length ? (
+      <div className={styles.container}>
+        <h4 className={styles.title}>Errors</h4>
+        <ul className={styles.errors}>
+          {errors.map((error, index) => (
+            <li key={index}>{error}</li>
+          ))}
+        </ul>
+      </div>
+    ) : null
   );
 }
