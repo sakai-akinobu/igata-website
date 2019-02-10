@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "compile": "$(npm bin)/tsc --noEmit",
     "build": "npm run prerender && $(npm bin)/webpack --config webpack/production.js",
     "lint": "$(npm bin)/tslint -c tslint.json src/**/*.ts src/**/*.tsx",
     "lint:fix": "$(npm bin)/tslint -c tslint.json --fix src/**/*.ts src/**/*.tsx",
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/sakai-akinobu/igata-website#readme",
   "pre-commit": [
+    "compile",
     "lint",
     "stylelint"
   ],
