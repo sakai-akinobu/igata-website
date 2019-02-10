@@ -1,5 +1,6 @@
-igata-website
----
+# igata-website
+
+[![CircleCI](https://circleci.com/gh/sakai-akinobu/igata-website.svg?style=svg)](https://circleci.com/gh/sakai-akinobu/igata-website)
 
 ## Usage
 
