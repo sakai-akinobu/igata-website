@@ -1,6 +1,7 @@
 import * as Ajv from "ajv";
 import {convert} from "igata";
 import * as React from "react";
+import {useState} from "react";
 
 import ContentContainer from "../../components/ContentContainer";
 import ContentHeader from "../../components/ContentHeader";
@@ -15,71 +16,40 @@ import SplitLayout from "../../components/SplitLayout";
 import ValidationErrors from "../../components/ValidationErrors";
 import defaultSampleCode from "../../utils/defaultSampleCode";
 
-interface IProps extends React.Props<any> {}
+export default function App() {
+  const [inputCode, setInputCode] = useState(defaultSampleCode);
+  const [outputCode, setOutputCode] = useState(tryParseToFlowCode(defaultSampleCode));
+  const [jsonParseErrorMessage, setJsonParseErrorMessage] = useState("");
+  const [jsonSchemaValidationErrorMessages, setJsonSchemaValidationErrorMessages] = useState<string[]>([]);
 
-interface IState {
-  inputCode: string;
-  outputCode: string;
-  jsonParseErrorMessage: string;
-  jsonSchemaValidationErrorMessages: string[];
-}
+  const handleChangeInputCode = (value: string) => {
+    setInputCode(value);
+    setOutputCode(tryParseToFlowCode(value));
+    setJsonParseErrorMessage(validateAsJson(value));
+    setJsonSchemaValidationErrorMessages(validateAsJsonSchema(value));
+  };
 
-export default class App extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
+  const errors = jsonParseErrorMessage ? [jsonParseErrorMessage] : jsonSchemaValidationErrorMessages;
 
-    this.state = {
-      inputCode: defaultSampleCode,
-      jsonParseErrorMessage: "",
-      jsonSchemaValidationErrorMessages: [],
-      outputCode: tryParseToFlowCode(defaultSampleCode),
-    };
-  }
-
-  public render() {
-    const {
-      inputCode,
-      outputCode,
-      jsonParseErrorMessage,
-      jsonSchemaValidationErrorMessages,
-    } = this.state;
-
-    const errors = jsonParseErrorMessage
-      ? [jsonParseErrorMessage]
-      : jsonSchemaValidationErrorMessages;
-
-    return (
-      <div>
-        <Header />
-        <ContentContainer>
-          <ContentHeader />
-          <Installation />
-          <Examples />
-          <div>
-            <SectionTitle title="Try it out" />
-            <SplitLayout>
-              <Editor value={inputCode} onChange={this.handleChangeInputCode} />
-              <OutputCode value={outputCode} />
-            </SplitLayout>
-            <ValidationErrors errors={errors} />
-          </div>
-        </ContentContainer>
-        <Footer />
-      </div>
-    );
-  }
-
-  private handleChangeInputCode = (value: string) => {
-    this.setState((state) => {
-      return {
-        ...state,
-        inputCode: value,
-        jsonParseErrorMessage: validateAsJson(value),
-        jsonSchemaValidationErrorMessages: validateAsJsonSchema(value),
-        outputCode: tryParseToFlowCode(value),
-      };
-    });
-  }
+  return (
+    <div>
+      <Header />
+      <ContentContainer>
+        <ContentHeader />
+        <Installation />
+        <Examples />
+        <div>
+          <SectionTitle title="Try it out" />
+          <SplitLayout>
+            <Editor value={inputCode} onChange={handleChangeInputCode} />
+            <OutputCode value={outputCode} />
+          </SplitLayout>
+          <ValidationErrors errors={errors} />
+        </div>
+      </ContentContainer>
+      <Footer />
+    </div>
+  );
 }
 
 function tryParseToFlowCode(value: string): string {
